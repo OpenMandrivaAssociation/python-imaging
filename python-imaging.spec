@@ -9,17 +9,18 @@ Source0:	http://effbot.org/downloads/Imaging-%{version}.tar.gz
 Source1:	pil-handbook.pdf.bz2
 Source2:	linux-python-paint-icon.gif
 Patch0:		Imaging-1.1.7-link.patch
-BuildRequires:	python-devel
-BuildRequires:	python-pkg-resources
-BuildRequires:	jpeg-devel
-BuildRequires:	png-devel
-BuildRequires:	pkgconfig(freetype2)
-BuildRequires:	lcms-devel
-BuildRequires:	libsane-devel
-BuildRequires:	tcl-devel
-BuildRequires:	tk-devel
-BuildRequires:	zlib-devel
-BuildRequires:	tkinter
+BuildRequires:  python-pkg-resources
+BuildRequires:  tkinter
+BuildRequires:  jpeg-devel
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(lcms)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(python)
+BuildRequires:  pkgconfig(sane-backends)
+BuildRequires:  pkgconfig(tcl)
+BuildRequires:  pkgconfig(tk)
+BuildRequires:  pkgconfig(zlib)
+
 
 %description
 Python Imaging Library version %{version}
