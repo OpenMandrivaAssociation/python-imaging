@@ -1,18 +1,17 @@
 Summary:	Python's own image processing library 
 Name:		python-imaging
-Version:	2.8.1
-Release:	5
+Version:	4.1.1
+Release:	1
 License:	MIT
 Group:		Development/Python
 # Original:
 #Url:		http://www.pythonware.com/products/pil/
 #Source0:	http://effbot.org/downloads/Imaging-%{version}.tar.gz
 # Much better maintained fork:
-Url:		https://pypi.python.org/pypi/Pillow/2.8.1
+Url:		https://python-pillow.org
 Source0:	https://pypi.python.org/packages/source/P/Pillow/Pillow-%{version}.tar.gz
 Source1:	pil-handbook.pdf.bz2
 Source2:	linux-python-paint-icon.gif
-Patch0:		Pillow-2.5.1-link.patch
 Provides:	python-pillow = %{EVRD}
 BuildRequires:	python-pkg-resources
 BuildRequires:	python-setuptools
@@ -56,7 +55,7 @@ bzcat %SOURCE1 > pil-handbook.pdf
 # perl -p -i -e 's/8.3/8.4/g' Setup.in
 
 # fix distutils problem
-# %patch
+# #patch
 # Make sure to get the right python library
 # perl -pi -e "s,(\\\$\((exec_prefix|prefix|exec_installdir)\)|/usr/X11R6)/lib\b,\1/%{_lib},g" Makefile.pre.in Setup.in
 
@@ -64,12 +63,12 @@ bzcat %SOURCE1 > pil-handbook.pdf
 perl -pi -e "s,(-[IL]/usr/local/(include|lib)),,g" setup.py
 
 %build
-CFLAGS="%{optflags} -fno-strict-aliasing" python setup.py build_ext -i
+CFLAGS="%{optflags} -fno-strict-aliasing" python setup.py build_ext -i -lm,dl
 
 %install
 find . -type f | xargs perl -pi -e 's@/usr/local/bin/python@/usr/bin/python@'
 
-PYTHONDONTWRITEBYTECODE=True python setup.py install --root=%{buildroot}
+PYTHONDONTWRITEBYTECODE=True python setup.py install --root=%{buildroot} build_ext -lm,dl
 
 cd libImaging
 mkdir -p  %{buildroot}%{_includedir}/python%{py_ver}/
@@ -78,12 +77,11 @@ cd ..
 
 %files
 %doc pil-handbook.pdf Scripts CHANGES*
-%{_bindir}/pil*.py
+%{_bindir}/*.py
 %dir %{py_platsitedir}/PIL
 %{py_platsitedir}/PIL/*.py*
 %{py_platsitedir}/PIL/_imaging*.so
 %{py_platsitedir}/PIL/_webp*.so
-%{py_platsitedir}/PIL/*.md
 %{py_platsitedir}/*.egg-info
 
 %files devel
