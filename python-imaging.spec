@@ -1,7 +1,7 @@
 Summary:	Python's own image processing library 
 Name:		python-imaging
-Version:	4.1.1
-Release:	2
+Version:	5.0.0
+Release:	1
 License:	MIT
 Group:		Development/Python
 # Original:
@@ -9,7 +9,7 @@ Group:		Development/Python
 #Source0:	http://effbot.org/downloads/Imaging-%{version}.tar.gz
 # Much better maintained fork:
 Url:		https://python-pillow.org
-Source0:	https://pypi.python.org/packages/source/P/Pillow/Pillow-%{version}.tar.gz
+Source0:	https://pypi.python.org/packages/0f/57/25be1a4c2d487942c3ed360f6eee7f41c5b9196a09ca71c54d1a33c968d9/Pillow-%{version}.tar.gz
 Source1:	pil-handbook.pdf.bz2
 Source2:	linux-python-paint-icon.gif
 Provides:	python-pillow = %{EVRD}
@@ -70,14 +70,13 @@ find . -type f | xargs perl -pi -e 's@/usr/local/bin/python@/usr/bin/python@'
 
 PYTHONDONTWRITEBYTECODE=True python setup.py install --root=%{buildroot} build_ext -lm,dl
 
-cd libImaging
+cd src/libImaging
 mkdir -p  %{buildroot}%{_includedir}/python%{py_ver}/
-install -m 644 ImPlatform.h Imaging.h %{buildroot}%{_includedir}/python%{py_ver}/
+install -m 644 ImPlatform.h Imaging.h ImagingUtils.h %{buildroot}%{_includedir}/python%{py_ver}/
 cd ..
 
 %files
-%doc pil-handbook.pdf Scripts CHANGES*
-%{_bindir}/*.py
+%doc pil-handbook.pdf CHANGES*
 %dir %{py_platsitedir}/PIL
 %{py_platsitedir}/PIL/*.py*
 %{py_platsitedir}/PIL/_imaging*.so
@@ -85,6 +84,4 @@ cd ..
 %{py_platsitedir}/*.egg-info
 
 %files devel
-%{_includedir}/python%{py_ver}/Imaging.h
-%{_includedir}/python%{py_ver}/ImPlatform.h
-
+%{_includedir}/python%{py_ver}/*.h
