@@ -1,6 +1,6 @@
 Summary:	Python's own image processing library 
 Name:		python-imaging
-Version:	4.1.1
+Version:	5.0.0
 Release:	1
 License:	MIT
 Group:		Development/Python
@@ -70,14 +70,13 @@ find . -type f | xargs perl -pi -e 's@/usr/local/bin/python@/usr/bin/python@'
 
 PYTHONDONTWRITEBYTECODE=True python setup.py install --root=%{buildroot} build_ext -lm,dl
 
-cd libImaging
+pushd src/libImaging
 mkdir -p  %{buildroot}%{_includedir}/python%{py_ver}/
 install -m 644 ImPlatform.h Imaging.h %{buildroot}%{_includedir}/python%{py_ver}/
-cd ..
+popd
 
 %files
-%doc pil-handbook.pdf Scripts CHANGES*
-%{_bindir}/*.py
+%doc pil-handbook.pdf CHANGES*
 %dir %{py_platsitedir}/PIL
 %{py_platsitedir}/PIL/*.py*
 %{py_platsitedir}/PIL/_imaging*.so
