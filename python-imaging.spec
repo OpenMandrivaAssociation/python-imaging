@@ -70,10 +70,10 @@ find . -type f | xargs perl -pi -e 's@/usr/local/bin/python@/usr/bin/python@'
 
 PYTHONDONTWRITEBYTECODE=True python setup.py install --root=%{buildroot} build_ext -lm,dl
 
-pushd src/libImaging
+cd src/libImaging
 mkdir -p  %{buildroot}%{_includedir}/python%{py_ver}/
 install -m 644 ImPlatform.h Imaging.h %{buildroot}%{_includedir}/python%{py_ver}/
-popd
+cd -
 
 %files
 %doc pil-handbook.pdf CHANGES*
@@ -82,6 +82,7 @@ popd
 %{py_platsitedir}/PIL/_imaging*.so
 %{py_platsitedir}/PIL/_webp*.so
 %{py_platsitedir}/*.egg-info
+%{py_platsitedir}/PIL/__pycache__/*.pyc
 
 %files devel
 %{_includedir}/python%{py_ver}/*.h
