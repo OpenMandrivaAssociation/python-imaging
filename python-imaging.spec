@@ -1,6 +1,6 @@
 Summary:	Python's own image processing library 
 Name:		python-imaging
-Version:	6.0.0
+Version:	6.1.0
 Release:	1
 License:	MIT
 Group:		Development/Python
@@ -12,6 +12,7 @@ Url:		https://python-pillow.org
 Source0:	https://github.com/python-pillow/Pillow/archive/%{version}.tar.gz
 Source1:	pil-handbook.pdf.bz2
 Source2:	linux-python-paint-icon.gif
+Patch0:		pillow-6.1.0-no-Lusrlib.patch
 Provides:	python-pillow = %{EVRD}
 BuildRequires:	python-pkg-resources
 BuildRequires:	python-setuptools
@@ -47,8 +48,7 @@ Provides:	python-pillow-devel = %{EVRD}
 Header files for the Python Imaging Library version %{version}.
 
 %prep
-%setup -qn Pillow-%{version}
-%apply_patches
+%autosetup -p1 -n Pillow-%{version}
 bzcat %SOURCE1 > pil-handbook.pdf
 
 # fix tk version

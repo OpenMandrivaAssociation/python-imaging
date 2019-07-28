@@ -1,0 +1,16 @@
+diff -up Pillow-6.1.0/setup.py.omv~ Pillow-6.1.0/setup.py
+--- Pillow-6.1.0/setup.py.omv~	2019-07-28 18:36:49.941214530 +0200
++++ Pillow-6.1.0/setup.py	2019-07-28 18:39:21.297076765 +0200
+@@ -407,9 +407,9 @@ class pil_build_ext(build_ext):
+                     _add_directory(library_dirs, d)
+ 
+         prefix = sysconfig.get_config_var("prefix")
+-        if prefix:
+-            _add_directory(library_dirs, os.path.join(prefix, "lib"))
+-            _add_directory(include_dirs, os.path.join(prefix, "include"))
++#        if prefix:
++#            _add_directory(library_dirs, os.path.join(prefix, "lib"))
++#            _add_directory(include_dirs, os.path.join(prefix, "include"))
+ 
+         #
+         # add platform directories
