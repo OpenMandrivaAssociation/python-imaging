@@ -11,7 +11,7 @@ Group:		Development/Python
 #Source0:	http://effbot.org/downloads/Imaging-%{version}.tar.gz
 # Much better maintained fork:
 Url:		https://python-pillow.org
-Source0:	https://github.com/python-pillow/Pillow/archive/%{version}.tar.gz
+Source0:	https://github.com/python-pillow/Pillow/archive/%{version}/Pillow-%{version}.tar.gz
 Source1:	pil-handbook.pdf.bz2
 Source2:	linux-python-paint-icon.gif
 Patch0:		pillow-6.1.0-no-Lusrlib.patch
