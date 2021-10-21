@@ -1,3 +1,6 @@
+# Work around incomplete debug packages
+%global _empty_manifest_terminate_build 0
+
 Summary:	Python's own image processing library 
 Name:		python-imaging
 Version:	7.2.0
