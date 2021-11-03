@@ -1,16 +1,14 @@
-diff -up Pillow-6.1.0/setup.py.omv~ Pillow-6.1.0/setup.py
---- Pillow-6.1.0/setup.py.omv~	2019-07-28 18:36:49.941214530 +0200
-+++ Pillow-6.1.0/setup.py	2019-07-28 18:39:21.297076765 +0200
-@@ -407,9 +407,9 @@ class pil_build_ext(build_ext):
+diff -up Pillow-8.4.0/setup.py.1~ Pillow-8.4.0/setup.py
+--- Pillow-8.4.0/setup.py.1~	2021-11-03 14:49:27.046936031 +0100
++++ Pillow-8.4.0/setup.py	2021-11-03 14:50:08.877846343 +0100
+@@ -471,8 +471,8 @@ class pil_build_ext(build_ext):
+                 for d in os.environ[k].split(os.path.pathsep):
                      _add_directory(library_dirs, d)
  
-         prefix = sysconfig.get_config_var("prefix")
--        if prefix:
--            _add_directory(library_dirs, os.path.join(prefix, "lib"))
--            _add_directory(include_dirs, os.path.join(prefix, "include"))
-+#        if prefix:
-+#            _add_directory(library_dirs, os.path.join(prefix, "lib"))
-+#            _add_directory(include_dirs, os.path.join(prefix, "include"))
+-        _add_directory(library_dirs, os.path.join(sys.prefix, "lib"))
+-        _add_directory(include_dirs, os.path.join(sys.prefix, "include"))
++        # _add_directory(library_dirs, os.path.join(sys.prefix, "lib"))
++        # _add_directory(include_dirs, os.path.join(sys.prefix, "include"))
  
          #
          # add platform directories
