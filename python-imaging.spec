@@ -4,7 +4,7 @@
 Summary:	Python's own image processing library 
 Name:		python-imaging
 Version:	9.0.1
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/Python
 # Original:
@@ -90,7 +90,7 @@ cd -
 %{py_platsitedir}/PIL/_imaging*.so
 %{py_platsitedir}/PIL/_webp*.so
 %{py_platsitedir}/*.egg-info
-%{py_platsitedir}/PIL/__pycache__/*.pyc
+#{py_platsitedir}/PIL/__pycache__/*.pyc
 
 %files devel
 %{_includedir}/python%{py_ver}/*.h
