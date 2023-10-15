@@ -1,9 +1,9 @@
 # Work around incomplete debug packages
-%global _empty_manifest_terminate_build 0
+%undefine _debugsource_packages
 
 Summary:	Python's own image processing library 
 Name:		python-imaging
-Version:	10.0.1
+Version:	10.1.0
 Release:	1
 License:	MIT
 Group:		Development/Python
