@@ -3,7 +3,7 @@
 
 Summary:	Python's own image processing library 
 Name:		python-imaging
-Version:	10.1.0
+Version:	10.4.0
 Release:	1
 License:	MIT
 Group:		Development/Python
@@ -86,6 +86,7 @@ cd -
 %files
 %doc pil-handbook.pdf CHANGES*
 %dir %{py_platsitedir}/PIL
+%{py_platsitedir}/PIL/py.typed
 %{py_platsitedir}/PIL/*.py*
 %{py_platsitedir}/PIL/_imaging*.so
 %{py_platsitedir}/PIL/_webp*.so
