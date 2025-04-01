@@ -3,7 +3,7 @@
 
 Summary:	Python's own image processing library 
 Name:		python-imaging
-Version:	11.1.0
+Version:	11.2.0
 Release:	1
 License:	MIT
 Group:		Development/Python
@@ -24,6 +24,7 @@ BuildRequires:	jpeg-devel
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(lcms2)
 BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(libavif)
 BuildRequires:	pkgconfig(libwebp)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(sane-backends)
@@ -89,6 +90,7 @@ cd -
 %{py_platsitedir}/PIL/py.typed
 %{py_platsitedir}/PIL/*.py*
 %{py_platsitedir}/PIL/_imaging*.so
+%{py_platsitedir}/PIL/_avif*.so
 %{py_platsitedir}/PIL/_webp*.so
 %{py_platsitedir}/*.egg-info
 #{py_platsitedir}/PIL/__pycache__/*.pyc
