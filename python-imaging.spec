@@ -33,6 +33,7 @@ BuildRequires:	pkgconfig(libtiff-4)
 BuildRequires:	pkgconfig(tcl)
 BuildRequires:	pkgconfig(tk)
 BuildRequires:	pkgconfig(zlib)
+BuildRequires:	pkgconfig(pybind11)
 
 %description
 Python Imaging Library version %{version}
