@@ -3,8 +3,8 @@
 
 Summary:	Python's own image processing library 
 Name:		python-imaging
-Version:	11.3.0
-Release:	2
+Version:	12.0.0
+Release:	1
 License:	MIT
 Group:		Development/Python
 # Original:
@@ -17,6 +17,7 @@ Source1:	pil-handbook.pdf.bz2
 Source2:	linux-python-paint-icon.gif
 Patch0:		pillow-6.1.0-no-Lusrlib.patch
 Provides:	python-pillow = %{EVRD}
+BuildSystem:	python
 BuildRequires:	python-pkg-resources
 BuildRequires:	python-setuptools
 BuildRequires:	tkinter
@@ -51,8 +52,7 @@ Provides:	python-pillow-devel = %{EVRD}
 %description devel
 Header files for the Python Imaging Library version %{version}.
 
-%prep
-%autosetup -p1 -n Pillow-%{version}
+%prep -a
 bzcat %SOURCE1 > pil-handbook.pdf
 
 # fix tk version
@@ -71,13 +71,8 @@ perl -pi -e "s,(-[IL]/usr/local/(include|lib)),,g" setup.py
 sed -i -e 's,/usr/lib,%{_libdir},g' setup.py
 %endif
 
-%build
-
-%install
+%install -a
 find . -type f | xargs perl -pi -e 's@/usr/local/bin/python@/usr/bin/python@'
-
-CFLAGS="%{optflags} -fno-strict-aliasing" python setup.py build_ext -i -lm,dl
-PYTHONDONTWRITEBYTECODE=True python setup.py install --root=%{buildroot} build_ext -lm,dl
 
 cd src/libImaging
 mkdir -p  %{buildroot}%{_includedir}/python%{py_ver}/
@@ -92,8 +87,8 @@ cd -
 %{py_platsitedir}/PIL/_imaging*.so
 %{py_platsitedir}/PIL/_avif*.so
 %{py_platsitedir}/PIL/_webp*.so
-%{py_platsitedir}/*.egg-info
-#{py_platsitedir}/PIL/__pycache__/*.pyc
+%{py_platsitedir}/*.dist-info
+%{py_platsitedir}/PIL/__pycache__/*.pyc
 
 %files devel
 %{_includedir}/python%{py_ver}/*.h
