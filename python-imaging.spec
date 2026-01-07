@@ -19,7 +19,8 @@ Patch0:		pillow-6.1.0-no-Lusrlib.patch
 Provides:	python-pillow = %{EVRD}
 BuildSystem:	python
 BuildRequires:	python-pkg-resources
-BuildRequires:	python-setuptools
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(pybind11)
 BuildRequires:	tkinter
 BuildRequires:	jpeg-devel
 BuildRequires:	pkgconfig(freetype2)
