@@ -3,16 +3,16 @@
 
 Summary:	Python's own image processing library 
 Name:		python-imaging
-Version:	12.0.0
+Version:	12.1.0
 Release:	1
 License:	MIT
 Group:		Development/Python
 # Original:
 #Url:		http://www.pythonware.com/products/pil/
-#Source0:	http://effbot.org/downloads/Imaging-%{version}.tar.gz
+#Source0:	http://effbot.org/downloads/Imaging-%%{version}.tar.gz
 # Much better maintained fork:
 Url:		https://python-pillow.org
-Source0:	https://github.com/python-pillow/Pillow/archive/%{version}.tar.gz
+Source0:	https://github.com/python-pillow/Pillow/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:	pil-handbook.pdf.bz2
 Source2:	linux-python-paint-icon.gif
 Patch0:		pillow-6.1.0-no-Lusrlib.patch
@@ -72,6 +72,9 @@ perl -pi -e "s,(-[IL]/usr/local/(include|lib)),,g" setup.py
 # Get rid of -L/usr/lib insanity
 sed -i -e 's,/usr/lib,%{_libdir},g' setup.py
 %endif
+
+%build -p
+export LDFLAGS="-lpython%{pyver}"
 
 %install -a
 find . -type f | xargs perl -pi -e 's@/usr/local/bin/python@/usr/bin/python@'
