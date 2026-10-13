@@ -4,7 +4,7 @@
 Summary:	Python's own image processing library 
 Name:		python-imaging
 Version:	12.2.0
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/Python
 # Original:
@@ -18,7 +18,6 @@ Source2:	linux-python-paint-icon.gif
 Patch0:		pillow-6.1.0-no-Lusrlib.patch
 Provides:	python-pillow = %{EVRD}
 BuildSystem:	python
-BuildRequires:	python-pkg-resources
 BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(pybind11)
 BuildRequires:	tkinter
